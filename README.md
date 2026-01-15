@@ -1,69 +1,63 @@
 # 🚀 Global Finance Monitor (Serverless)
 
-A personal finance dashboard powered by **GitHub Actions** (Data ETL), **GitHub Pages** (Hosting), and **Akshare** (Data Source).
+A high-performance, serverless financial dashboard powered by **GitHub Actions (ETL)**, **GitHub Pages (Hosting)**, and **Akshare (Data API)**.
 
-![Dashboard Preview](https://via.placeholder.com/800x400?text=Dashboard+Preview)
+> ⚠️ **Disclaimer**: This project is for educational and technical demonstration purposes only. All data is sourced from public networks. It does **NOT** provide any investment advice. Markets are risky; invest with caution.
 
-## ✨ Features
+## ✨ Key Features
 
-- **Multi-Market Tracking**: Real-time data for **S&P 500**, **Nasdaq**, **A-Share (CSI 300/SSE)**, **Hang Seng**, **Gold**, and **Bitcoin**.
-- **Quant Screener**: Daily automated scanning of top gainers in the A-Share market.
-- **DCA Simulator**: Built-in backtesting to show returns for Dollar-Cost Averaging strategies (Daily Investment).
-- **Serverless Architecture**: 100% free hosting and compute using GitHub infrastructure.
-- **Resilient Data**: Uses `Akshare` (Sina Finance API) for reliable access globally (including China).
+- **Multi-Market Tracking**: Real-time monitoring of S&P 500, Nasdaq, SSE Composite, CSI 300, Hang Seng Index, Gold, and Bitcoin.
+- **Value Investing Screener**:
+    - **A-Shares**: Filters for "Core Assets" with Market Cap > ¥50B and PE Ratio (0-60).
+    - **HK Stocks**: Filters for "Blue Chips" with Price > $5.0 and Turnover > $100M.
+    - **US Stocks**: Filters for "Big Tech" with Market Cap > $50B and PE Ratio (0-60).
+- **Intelligent DCA Calculator**: Professional Dollar-Cost Averaging simulator with customizable date ranges, frequencies, and investment amounts.
+- **Professional Visualizations**: Interactive charts powered by **Apache ECharts**, supporting mouse-wheel zoom, drag-to-pan, and long-term history tracking.
+- **Serverless Automation**: 100% automated data pipelines and hosting using GitHub's free infrastructure.
 
 ## 🛠️ Technology Stack
 
 - **Backend**: Python 3.9+
-    - `akshare`: Financial data fetching.
-    - `pandas`: Data processing.
-- **Frontend**: Static HTML5
-    - `Tailwind CSS`: Utility-first styling.
-    - `Apache ECharts`: Interactive financial charts.
-    - `Marked.js`: Markdown rendering for reports.
-- **Automation**: GitHub Actions (Cron Job: Daily at 21:00 UTC).
-
-## 🚀 Deployment Guide
-
-### 1. Fork this Repository
-Click the **Fork** button at the top right to create your own copy.
-
-### 2. Enable GitHub Pages
-1. Go to your repository **Settings**.
-2. Click on **Pages** in the left sidebar.
-3. Under **Build and deployment > Source**, select **Deploy from a branch**.
-4. Select the **main** branch and `/ (root)` folder.
-5. Click **Save**.
-
-### 3. Activate Automation
-1. Go to the **Actions** tab.
-2. You might see a warning "Workflows aren't being run on this forked repository". Click **I understand my workflows, go ahead and enable them**.
-3. Select **Daily Finance Update** on the left.
-4. Click **Run workflow** -> **Run workflow** to trigger the first data fetch manually.
-5. Wait for the green checkmark ✅ (approx. 1-2 mins).
-
-### 4. Visit Your Dashboard
-Once the workflow finishes, your site will be live at:
-`https://<your-username>.github.io/<repository-name>/`
-
-*(Note: It might take a few minutes for the first deploy to propagate).*
+    - `akshare`: Comprehensive financial data interface.
+    - `pandas`: Data cleansing and incremental storage logic.
+- **Frontend**: Modern Static Web
+    - `Tailwind CSS`: Responsive utility-first styling.
+    - `Apache ECharts`: High-performance financial charting.
+    - `Marked.js`: Real-time Markdown rendering for AI/Quant reports.
+- **CI/CD**: GitHub Actions (Scheduled Daily at 21:00 UTC).
 
 ## 📂 Project Structure
 
 ```text
 .
-├── .github/workflows/   # Daily cron job configuration
-├── data/                # Generated JSON data (Do not edit manually)
-├── scripts/             # Python backend logic
-│   ├── fetch_data.py    # Fetches market index data
-│   └── screener.py      # Generates quant reports & DCA stats
-├── js/                  # Frontend logic
-├── index.html           # Dashboard UI
-└── requirements.txt     # Dependencies
+├── .github/workflows/   # Automated update workflows
+├── data/                # Incremental market data (JSON)
+├── scripts/             # Python logic (ETL & Value Screening)
+├── js/                  # Frontend logic & ECharts config
+├── index.html           # Dashboard User Interface
+└── requirements.txt     # Backend dependencies
 ```
 
-## 🤝 Contributing
-Feel free to open issues or PRs to add more data sources (e.g., individual stocks) or improve the UI!
+## 🚀 Deployment Guide
+
+### 1. Fork the Repository
+Click the **Fork** button at the top right to create your own copy.
+
+### 2. Setup GitHub Pages
+1. Go to your repository **Settings**.
+2. Click **Pages** in the left sidebar.
+3. Under **Build and deployment > Source**, select **Deploy from a branch**.
+4. Select the `main` branch and `/ (root)` folder. Click **Save**.
+
+### 3. Trigger Data Pipeline
+1. Go to the **Actions** tab.
+2. Select **Daily Finance Update** on the left.
+3. Click **Run workflow** to manually trigger the first data fetch.
+4. Once the workflow turns green (✅), your data is ready.
+
+### 4. Visit Dashboard
+Your dashboard will be available at:
+`https://<your-username>.github.io/<repository-name>/`
 
 ## 📄 License
 MIT

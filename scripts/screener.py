@@ -5,119 +5,128 @@ import os
 from datetime import datetime
 
 OUTPUT_FILE = "data/ai_report.json"
+MARKET_DATA_FILE = "data/market_data.json"
 
-def get_top_gainers_a_share():
-    """获取沪深 A 股涨幅前 5"""
+def get_cn_value_movers():
+    """A股 价值/蓝筹 异动榜
+    标准: 总市值 > 500亿, 0 < 市盈率 < 60
+    """
     try:
-        print("Fetching A-Share spot data...")
-        # 东方财富 A股 实时行情
+        print("Fetching A-Share data (Value Filter)...")
         df = ak.stock_zh_a_spot_em()
-        # 按涨跌幅排序
-        df.sort_values(by="涨跌幅", ascending=False, inplace=True)
-        top5 = df.head(5)
+        df['总市值'] = pd.to_numeric(df['总市值'], errors='coerce')
+        df['市盈率-动态'] = pd.to_numeric(df['市盈率-动态'], errors='coerce')
         
-        result = []
-        for _, row in top5.iterrows():
-            result.append(f"{row['名称']} ({row['代码']}): +{row['涨跌幅']}%")
-        return result
+        mask = (df['总市值'] > 500_0000_0000) & (df['市盈率-动态'] > 0) & (df['市盈率-动态'] < 60)
+        filtered_df = df[mask].copy()
+        filtered_df.sort_values(by="涨跌幅", ascending=False, inplace=True)
+        
+        top = filtered_df.head(5)
+        return [f"{row['名称']} ({row['代码']}): +{row['涨跌幅']}% (PE: {row['市盈率-动态']})" for _, row in top.iterrows()]
     except Exception as e:
-        print(f"Error fetching A-Share: {e}")
+        print(f"A-Share Error: {e}")
         return []
 
-def get_hk_gainers():
-    """获取港股涨幅前 3 (主板)"""
+def get_hk_value_movers():
+    """港股 核心资产 异动榜
+    标准: 最新价 > 5.0, 成交额 > 1亿 (作为大盘股替代标准)
+    """
     try:
-        print("Fetching HK spot data...")
-        df = ak.stock_hk_market_watch(symbol="主板") # 港股主板
-        # 注意：Akshare不同接口列名可能不同，需防御性编程
-        # 这里假设有一列是涨跌幅
-        if '涨跌幅' in df.columns:
-            df.sort_values(by="涨跌幅", ascending=False, inplace=True)
-            top3 = df.head(3)
-            result = []
-            for _, row in top3.iterrows():
-                result.append(f"{row['名称']} ({row['代码']}): +{row['涨跌幅']}%")
-            return result
+        print("Fetching HK data (Liquidity Filter)...")
+        df = ak.stock_hk_spot_em()
+        df['最新价'] = pd.to_numeric(df['最新价'], errors='coerce')
+        df['成交额'] = pd.to_numeric(df['成交额'], errors='coerce')
+        df['涨跌幅'] = pd.to_numeric(df['涨跌幅'], errors='coerce')
+        
+        # 价格 > 5 且 成交额 > 1亿 HKD (筛选活跃蓝筹)
+        mask = (df['最新价'] > 5.0) & (df['成交额'] > 1_0000_0000)
+        filtered_df = df[mask].copy()
+        filtered_df.sort_values(by="涨跌幅", ascending=False, inplace=True)
+        
+        top = filtered_df.head(3)
+        return [f"{row['名称']} ({row['代码']}): +{row['涨跌幅']}%" for _, row in top.iterrows()]
     except Exception as e:
-        print(f"Error fetching HK Stocks: {e}")
+        print(f"HK Stocks Error: {e}")
         return []
 
-def generate_quant_report():
-    print("Generating Daily Quant Report...")
-    
-    # 1. A股 龙虎榜/涨幅榜
-    a_gainers = get_top_gainers_a_share()
-    
-    # 2. 简易市场情绪判断
-    # 这里为了演示，我们直接写死或简单判断。
-    # 实际可以根据 fetch_data.py 生成的 market_data.json 来判断指数涨跌。
-    
-    content = "### 📊 每日量化精选 (规则驱动)\n\n"
-    
-    content += "#### 🇨🇳 A股今日领涨 (Top 5)\n"
-    if a_gainers:
-        for item in a_gainers:
-            content += f"- {item}\n"
-    else:
-        content += "- 数据获取暂时不可用\n"
-        
-    content += "\n#### 💡 投资风向标\n"
-    content += "基于动量策略，今日市场热点主要集中在上述领涨板块。建议关注成交量配合放大的个股。\n\n"
-    
-    # --- DCA 定投回测 (基于已有数据) ---
+def get_us_value_movers():
+    """美股 价值科技 异动榜
+    标准: 总市值 > 500亿 USD, 0 < 市盈率 < 60
+    """
     try:
-        with open("data/market_data.json", 'r', encoding='utf-8') as f:
-            market_data = json.load(f)
+        print("Fetching US data (Value Filter)...")
+        df = ak.stock_us_famous_spot_em(symbol="科技类") 
+        df['总市值'] = pd.to_numeric(df['总市值'], errors='coerce')
+        df['市盈率'] = pd.to_numeric(df['市盈率'], errors='coerce')
+        df['涨跌幅'] = pd.to_numeric(df['涨跌幅'], errors='coerce')
         
-        content += "#### 💰 定投回测 (近30日模拟)\n"
-        content += "| 资产 | 累计投入 | 现值 | 收益率 |\n"
-        content += "|---|---|---|---|\n"
+        # 市值 > 500亿 USD, PE < 60
+        mask = (df['总市值'] > 500_0000_0000) & (df['市盈率'] > 0) & (df['市盈率'] < 60)
+        filtered_df = df[mask].copy()
+        filtered_df.sort_values(by="涨跌幅", ascending=False, inplace=True)
         
-        for ticker, data in market_data.items():
-            # 只计算几个核心资产
-            if "Bitcoin" not in data['name'] and "S&P" not in data['name'] and "Gold" not in data['name']:
-                continue
-                
-            history = data.get('history', [])
-            if not history: continue
-            
-            total_invested = 0
-            total_shares = 0
-            daily_invest = 100 # 每天定投 100 元
-            
-            for day in history:
-                price = day['close']
-                if price > 0:
-                    shares = daily_invest / price
-                    total_shares += shares
-                    total_invested += daily_invest
-            
-            current_price = data['current_price']
-            current_value = total_shares * current_price
-            return_rate = ((current_value - total_invested) / total_invested) * 100
-            
-            content += f"| {data['name']} | ${total_invested} | ${round(current_value, 0)} | **{round(return_rate, 2)}%** |\n"
-            
-        content += "\n*(注：假设每日定投 $100，不含手续费)*\n\n"
-        
+        top = filtered_df.head(3)
+        return [f"{row['名称']}: +{row['涨跌幅']}% (PE: {row['市盈率']})" for _, row in top.iterrows()]
     except Exception as e:
-        print(f"DCA Calc Error: {e}")
+        print(f"US Stocks Error: {e}")
+        return []
 
-    content += "*(注：本报告由 Python 脚本自动生成，非 AI 建议，仅供参考)*"
+def generate_report():
+    print("Generating Global Value Report...")
     
-    report = {
+    cn_list = get_cn_value_movers()
+    hk_list = get_hk_value_movers()
+    us_list = get_us_value_movers()
+    
+    # 情绪判断
+    sentiment = "观察 (Neutral)"
+    sentiment_icon = "⚪"
+    try:
+        if os.path.exists(MARKET_DATA_FILE):
+            with open(MARKET_DATA_FILE, 'r', encoding='utf-8') as f:
+                m_data = json.load(f)
+                spx_chg = m_data.get('^GSPC', {}).get('change_percent', 0)
+                sh_chg = m_data.get('000001.SS', {}).get('change_percent', 0)
+                if spx_chg > 0 and sh_chg > 0: 
+                    sentiment = "乐观 (Bullish) 🟢"
+                elif spx_chg < 0 and sh_chg < 0: 
+                    sentiment = "谨慎 (Cautious) 🟠"
+    except: pass
+
+    content = f"### 💎 全球核心资产动态 (Value Monitor)\n\n"
+    content += f"> ⚠️ **免责声明**: 本报告仅供学习与研究参考，不构成任何投资建议。市场有风险，入市需谨慎。\n\n"
+    content += f"**今日市场基调**: {sentiment}\n\n"
+    
+    content += "#### 🇨🇳 A股核心资产 (Large Cap Value)\n"
+    content += "*(市值>500亿, 0<PE<60)*\n"
+    if cn_list:
+        for item in cn_list: content += f"- {item}\n"
+    else: content += "- 无符合条件的标的\n"
+    
+    content += "\n#### 🇭🇰 港股蓝筹动向 (HK Blue Chips)\n"
+    content += "*(价格>5.0, 成交额>1亿)*\n"
+    if hk_list:
+        for item in hk_list: content += f"- {item}\n"
+    else: content += "- 无符合条件的标的\n"
+
+    content += "\n#### 🇺🇸 美股价值科技 (US Value Tech)\n"
+    content += "*(市值>500亿$, 0<PE<60)*\n"
+    if us_list:
+        for item in us_list: content += f"- {item}\n"
+    else: content += "- 无符合条件的标的\n"
+    
+    content += "\n---\n"
+    content += "#### 🧠 价值投资笔记\n"
+    content += "坚持寻找具有护城河、估值合理的卓越企业。每日波动只是噪音，核心在于资产的长期复利能力。结合 AI 分析可以进一步过滤情绪噪音，识别真正的价值洼地。\n"
+    
+    return {
         "date": datetime.now().strftime('%Y-%m-%d'),
         "content": content,
-        "source": "Akshare Quant Rules"
+        "source": "Global Value Strategy"
     }
-    
-    return report
-
-def save_report(report):
-    with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
-        json.dump(report, f, indent=2, ensure_ascii=False)
-    print(f"Quant Report saved to {OUTPUT_FILE}")
 
 if __name__ == "__main__":
-    report = generate_quant_report()
-    save_report(report)
+    report = generate_report()
+    with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
+        json.dump(report, f, indent=2, ensure_ascii=False)
+    print("Report Generated Successfully.")

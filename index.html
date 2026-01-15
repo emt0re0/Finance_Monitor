@@ -3,65 +3,312 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Serverless Finance Monitor</title>
-    <!-- Tailwind CSS (CDN) -->
+    <title>全球金融资产追踪 (Serverless)</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- ECharts (CDN) -->
+    <!-- ECharts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
-    <!-- Marked (Markdown Parser) -->
+    <!-- Marked -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['"Noto Sans SC"', "sans-serif"],
+              mono: ['"JetBrains Mono"', "monospace"],
+            },
+            colors: {
+              gray: {
+                850: "#1f2937",
+                900: "#111827",
+                950: "#030712",
+              },
+            },
+          },
+        },
+      };
+    </script>
     <style>
       body {
-        font-family: "Inter", sans-serif;
-        background-color: #0f172a;
+        background-color: #030712;
+        background-image: radial-gradient(circle at 50% 0%, #172554 0%, transparent 25%);
         color: #e2e8f0;
+        min-height: 100vh;
       }
       .card {
-        background-color: #1e293b;
-        border-radius: 0.5rem;
-        padding: 1rem;
+        background-color: rgba(17, 24, 39, 0.7); /* Translucent */
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(55, 65, 81, 0.5);
+        border-radius: 0.75rem;
+        padding: 1.25rem;
+        transition: all 0.3s ease;
+      }
+      .card:hover {
+        border-color: rgba(59, 130, 246, 0.4);
+        box-shadow: 0 4px 20px -5px rgba(59, 130, 246, 0.1);
+        transform: translateY(-2px);
+      }
+
+      /* AI Report Terminal Style */
+      .ai-terminal {
+        background: #0f172a;
+        border: 1px solid #1e293b;
+        font-family: "JetBrains Mono", monospace;
+      }
+      .ai-terminal h3 {
+        color: #60a5fa;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+      }
+      .ai-terminal h4 {
+        color: #94a3b8;
+        font-weight: bold;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+      }
+      .ai-terminal ul {
+        list-style-type: none;
+        padding-left: 0;
+      }
+      .ai-terminal li {
+        margin-bottom: 0.25rem;
+        display: flex;
+        align-items: center;
+      }
+      .ai-terminal li:before {
+        content: ">";
+        color: #22c55e;
+        margin-right: 8px;
+        font-weight: bold;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #334155;
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #475569;
+      }
+
+      /* Date Input Dark Mode Fix */
+      input[type="date"]::-webkit-calendar-picker-indicator {
+        filter: invert(1);
+        cursor: pointer;
       }
     </style>
   </head>
-  <body class="p-6">
+  <body class="p-4 md:p-8 max-w-7xl mx-auto">
     <!-- Header -->
-    <header class="mb-8 flex justify-between items-center">
-      <div>
-        <h1 class="text-3xl font-bold text-white tracking-tight">🚀 Serverless Finance Monitor</h1>
-        <p class="text-gray-400 text-sm mt-1">Global Markets Dashboard • Updated Daily</p>
+    <header class="mb-8 border-b border-gray-800 pb-6">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div>
+          <h1 class="text-3xl font-bold text-white tracking-tight flex items-center gap-3">
+            <span class="text-blue-500 text-4xl">🚀</span>
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400"
+              >全球金融资产追踪</span
+            >
+          </h1>
+          <p class="text-gray-400 text-sm mt-2 font-mono pl-1">Serverless Quant Dashboard • v2.2</p>
+        </div>
+        <div class="flex flex-col items-end gap-1">
+          <div
+            id="status-badge"
+            class="px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase bg-gray-800 text-gray-400 border border-gray-700"
+          >
+            Connecting...
+          </div>
+          <div id="last-updated" class="text-[10px] font-mono text-gray-500"></div>
+        </div>
       </div>
-      <div
-        id="status-badge"
-        class="px-3 py-1 rounded-full text-xs font-semibold bg-gray-700 text-gray-300"
-      >
-        Loading...
+
+      <!-- Disclaimer -->
+      <div class="mt-4 p-2 bg-yellow-900/20 border border-yellow-700/30 rounded text-center">
+        <p class="text-[10px] md:text-xs text-yellow-500/80 font-mono tracking-wide">
+          ⚠️
+          声明：本项目仅用于数据展示与学习，所有数据均来源于公开网络。不提供任何投资建议，市场有风险，投资需谨慎。
+          <br class="hidden md:block" />
+          (Disclaimer: For reference only. Not investment advice.)
+        </p>
       </div>
     </header>
 
     <!-- Market Overview Cards -->
-    <div id="market-cards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-      <!-- Cards will be injected here by JS -->
-      <div class="card animate-pulse h-24"></div>
-      <div class="card animate-pulse h-24"></div>
-      <div class="card animate-pulse h-24"></div>
-      <div class="card animate-pulse h-24"></div>
+    <div id="market-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+      <!-- Cards injected by JS -->
     </div>
 
-    <!-- Main Charts Area -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-      <!-- Main Trend Chart -->
-      <div class="card lg:col-span-2">
-        <h2 class="text-xl font-semibold mb-4 text-white">📈 Price Trend (30 Days)</h2>
-        <div id="trend-chart" style="width: 100%; height: 400px"></div>
+    <!-- Main Content Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <!-- Left Column: Charts & DCA (8 cols) -->
+      <div class="lg:col-span-8 space-y-6">
+        <!-- Trend Chart -->
+        <div class="card relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-3xl"></div>
+          <div class="flex justify-between items-center mb-6 relative z-10">
+            <h2 class="text-lg font-bold text-white flex items-center gap-2">
+              <span class="bg-blue-500/10 text-blue-400 p-1.5 rounded-md">📈</span> 价格走势
+            </h2>
+            <div class="flex gap-3 items-center">
+              <span class="text-[10px] text-gray-500 hidden md:flex items-center">
+                <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
+                  ></path>
+                </svg>
+                滚轮缩放 / 拖拽平移
+              </span>
+              <select
+                id="chart-select"
+                class="bg-gray-900 text-xs text-gray-300 border border-gray-700 rounded-md px-3 py-1.5 focus:outline-none focus:border-blue-500 transition-colors cursor-pointer hover:bg-gray-800"
+              >
+                <!-- Options injected by JS -->
+              </select>
+            </div>
+          </div>
+          <div id="trend-chart" style="width: 100%; height: 350px"></div>
+        </div>
+
+        <!-- Interactive DCA Simulator -->
+        <div class="card border-blue-900/20 bg-gradient-to-b from-gray-900 to-gray-900/50">
+          <div class="mb-5 border-b border-gray-800 pb-4">
+            <h2 class="text-lg font-bold text-blue-100 flex items-center gap-2">
+              <span class="bg-blue-500/10 text-blue-400 p-1.5 rounded-md">💰</span> 定投计算器
+            </h2>
+            <p class="text-xs text-blue-300/60 mt-1 font-mono">
+              Simulate Dollar-Cost Averaging Strategy (Value Investing Tool)
+            </p>
+          </div>
+
+          <!-- Controls -->
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+            <div class="md:col-span-1">
+              <label
+                class="block text-[10px] uppercase font-bold text-gray-500 mb-1.5 tracking-wider"
+                >每次定投金额</label
+              >
+              <div class="relative group">
+                <span
+                  class="absolute left-3 top-2 text-gray-500 group-focus-within:text-blue-500 transition-colors"
+                  >$</span
+                >
+                <input
+                  type="number"
+                  id="dca-amount"
+                  value="100"
+                  class="w-full bg-gray-950 border border-gray-800 rounded-lg py-1.5 pl-6 pr-3 text-sm text-white focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                />
+              </div>
+            </div>
+            <div class="md:col-span-1">
+              <label
+                class="block text-[10px] uppercase font-bold text-gray-500 mb-1.5 tracking-wider"
+                >频率</label
+              >
+              <select
+                id="dca-freq"
+                class="w-full bg-gray-950 border border-gray-800 rounded-lg py-1.5 px-3 text-sm text-white focus:ring-1 focus:ring-blue-500 outline-none"
+              >
+                <option value="daily">每日 (Daily)</option>
+                <option value="weekly" selected>每周 (Weekly)</option>
+                <option value="monthly">每月 (Monthly)</option>
+              </select>
+            </div>
+            <!-- Date Range Selectors -->
+            <div class="md:col-span-2 grid grid-cols-2 gap-2">
+              <div>
+                <label
+                  class="block text-[10px] uppercase font-bold text-gray-500 mb-1.5 tracking-wider"
+                  >开始日期</label
+                >
+                <input
+                  type="date"
+                  id="dca-start"
+                  class="w-full bg-gray-950 border border-gray-800 rounded-lg py-1.5 px-2 text-sm text-white focus:ring-1 focus:ring-blue-500 outline-none"
+                />
+              </div>
+              <div>
+                <label
+                  class="block text-[10px] uppercase font-bold text-gray-500 mb-1.5 tracking-wider"
+                  >结束日期</label
+                >
+                <input
+                  type="date"
+                  id="dca-end"
+                  class="w-full bg-gray-950 border border-gray-800 rounded-lg py-1.5 px-2 text-sm text-white focus:ring-1 focus:ring-blue-500 outline-none"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Results Table -->
+          <div class="overflow-hidden rounded-lg border border-gray-800">
+            <table class="w-full text-sm text-left text-gray-400">
+              <thead
+                class="text-[10px] text-gray-500 uppercase bg-gray-950/80 font-mono tracking-wider"
+              >
+                <tr>
+                  <th class="px-4 py-3 font-semibold">Asset</th>
+                  <th class="px-4 py-3 font-semibold">Invested</th>
+                  <th class="px-4 py-3 font-semibold">Value</th>
+                  <th class="px-4 py-3 font-semibold text-right">ROI</th>
+                </tr>
+              </thead>
+              <tbody id="dca-table-body" class="divide-y divide-gray-800 bg-gray-900/30">
+                <!-- Rows injected by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
 
-      <!-- AI Analysis / Summary Panel (Placeholder for Step 4) -->
-      <div class="card">
-        <h2 class="text-xl font-semibold mb-4 text-blue-400">🤖 AI Investment Logic</h2>
-        <div id="ai-content" class="text-sm text-gray-300 space-y-3">
-          <p class="italic text-gray-500">Connecting to Gemini API...</p>
-          <div class="p-4 bg-gray-800 rounded border border-gray-700">
-            <p>Thinking...</p>
+      <!-- Right Column: AI & Info (4 cols) -->
+      <div class="lg:col-span-4 space-y-6">
+        <!-- AI Report -->
+        <div
+          class="card h-full flex flex-col p-0 overflow-hidden border-blue-500/20 shadow-lg shadow-blue-900/10"
+        >
+          <div
+            class="bg-gray-900/80 border-b border-gray-800 p-4 flex justify-between items-center"
+          >
+            <h2
+              class="text-sm font-bold text-blue-400 flex items-center gap-2 uppercase tracking-wide"
+            >
+              <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+              Market Intelligence
+            </h2>
+            <span
+              class="text-[10px] bg-blue-900/30 text-blue-300 px-2 py-0.5 rounded border border-blue-800"
+              >AI AGENT</span
+            >
+          </div>
+
+          <div
+            id="ai-content"
+            class="flex-1 p-5 overflow-y-auto space-y-4 text-sm text-gray-300 leading-relaxed ai-terminal"
+          >
+            <!-- AI content injected here -->
+            <div class="flex flex-col gap-2 opacity-50">
+              <div class="h-2 bg-gray-700 rounded w-3/4"></div>
+              <div class="h-2 bg-gray-700 rounded w-1/2"></div>
+              <div class="h-2 bg-gray-700 rounded w-5/6"></div>
+            </div>
           </div>
         </div>
       </div>
