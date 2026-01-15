@@ -125,7 +125,7 @@
         "close": 6926.6
       }
     ],
-    "last_updated": "2026-01-15 13:53:17",
+    "last_updated": "2026-01-15 14:04:31",
     "source": "Akshare (Sina)"
   },
   "^IXIC": {
@@ -254,7 +254,7 @@
         "close": 23471.75
       }
     ],
-    "last_updated": "2026-01-15 13:53:18",
+    "last_updated": "2026-01-15 14:04:31",
     "source": "Akshare (Sina)"
   },
   "000001.SS": {
@@ -383,7 +383,7 @@
         "close": 4112.6
       }
     ],
-    "last_updated": "2026-01-15 13:53:18",
+    "last_updated": "2026-01-15 14:04:32",
     "source": "Akshare (Sina)"
   },
   "000300.SS": {
@@ -512,7 +512,7 @@
         "close": 4751.43
       }
     ],
-    "last_updated": "2026-01-15 13:53:19",
+    "last_updated": "2026-01-15 14:04:33",
     "source": "Akshare (Sina)"
   },
   "^HSI": {
@@ -641,13 +641,13 @@
         "close": 26999.81
       }
     ],
-    "last_updated": "2026-01-15 13:53:19",
+    "last_updated": "2026-01-15 14:04:33",
     "source": "Akshare (Sina)"
   },
   "GC=F": {
     "name": "Gold (COMEX)",
-    "current_price": 4591.1,
-    "change_percent": -0.91,
+    "current_price": 4592.4,
+    "change_percent": -0.88,
     "history": [
       {
         "date": "2025-12-03",
@@ -767,16 +767,16 @@
       },
       {
         "date": "2026-01-15",
-        "close": 4591.1
+        "close": 4592.4
       }
     ],
-    "last_updated": "2026-01-15 13:53:22",
+    "last_updated": "2026-01-15 14:04:35",
     "source": "Akshare (Sina)"
   },
   "BTC-USD": {
     "name": "Bitcoin (CME Futures)",
-    "current_price": 96910.0,
-    "change_percent": -0.91,
+    "current_price": 97245.0,
+    "change_percent": -0.57,
     "history": [
       {
         "date": "2025-12-03",
@@ -896,10 +896,10 @@
       },
       {
         "date": "2026-01-15",
-        "close": 96910.0
+        "close": 97245.0
       }
     ],
-    "last_updated": "2026-01-15 13:53:23",
+    "last_updated": "2026-01-15 14:04:37",
     "source": "Akshare (Sina)"
   }
 }
