@@ -22193,7 +22193,7 @@
         "close": 6926.6
       }
     ],
-    "last_updated": "2026-01-15 22:28:34",
+    "last_updated": "2026-01-15 15:18:42",
     "currency": "USD",
     "source": "Akshare"
   },
@@ -44379,7 +44379,7 @@
         "close": 23471.75
       }
     ],
-    "last_updated": "2026-01-15 22:28:35",
+    "last_updated": "2026-01-15 15:18:43",
     "currency": "USD",
     "source": "Akshare"
   },
@@ -78645,7 +78645,7 @@
         "close": 4112.6
       }
     ],
-    "last_updated": "2026-01-15 22:28:36",
+    "last_updated": "2026-01-15 15:18:43",
     "currency": "CNY",
     "source": "Akshare"
   },
@@ -101979,14 +101979,14 @@
         "close": 4751.43
       }
     ],
-    "last_updated": "2026-01-15 22:28:37",
+    "last_updated": "2026-01-15 15:18:44",
     "currency": "CNY",
     "source": "Akshare"
   },
   "^HSI": {
     "name": "恒生指数 (HSI)",
-    "current_price": 26999.81,
-    "change_percent": 0.56,
+    "current_price": 26923.62,
+    "change_percent": -0.28,
     "history": [
       {
         "date": "2013-08-20",
@@ -114199,16 +114199,20 @@
       {
         "date": "2026-01-14",
         "close": 26999.81
+      },
+      {
+        "date": "2026-01-15",
+        "close": 26923.62
       }
     ],
-    "last_updated": "2026-01-15 22:28:38",
+    "last_updated": "2026-01-15 15:18:45",
     "currency": "HKD",
     "source": "Akshare"
   },
   "GC=F": {
     "name": "黄金 (COMEX)",
-    "current_price": 4603.8,
-    "change_percent": -0.63,
+    "current_price": 4612.8,
+    "change_percent": -0.44,
     "history": [
       {
         "date": "2016-01-15",
@@ -124572,17 +124576,17 @@
       },
       {
         "date": "2026-01-15",
-        "close": 4603.8
+        "close": 4612.8
       }
     ],
-    "last_updated": "2026-01-15 22:28:39",
+    "last_updated": "2026-01-15 15:18:48",
     "currency": "USD",
     "source": "Akshare"
   },
   "BTC-USD": {
     "name": "比特币 (BTC)",
-    "current_price": 97275.0,
-    "change_percent": -0.54,
+    "current_price": 96500.0,
+    "change_percent": -1.33,
     "history": [
       {
         "date": "2017-12-18",
@@ -132222,10 +132226,10 @@
       },
       {
         "date": "2026-01-15",
-        "close": 97275.0
+        "close": 96500.0
       }
     ],
-    "last_updated": "2026-01-15 22:28:39",
+    "last_updated": "2026-01-15 15:18:49",
     "currency": "USD",
     "source": "Akshare"
   }
