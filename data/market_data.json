@@ -22193,7 +22193,7 @@
         "close": 6926.6
       }
     ],
-    "last_updated": "2026-01-15 15:18:42",
+    "last_updated": "2026-01-15 21:25:40",
     "currency": "USD",
     "source": "Akshare"
   },
@@ -44379,7 +44379,7 @@
         "close": 23471.75
       }
     ],
-    "last_updated": "2026-01-15 15:18:43",
+    "last_updated": "2026-01-15 21:25:40",
     "currency": "USD",
     "source": "Akshare"
   },
@@ -78645,7 +78645,7 @@
         "close": 4112.6
       }
     ],
-    "last_updated": "2026-01-15 15:18:43",
+    "last_updated": "2026-01-15 21:25:41",
     "currency": "CNY",
     "source": "Akshare"
   },
@@ -101979,7 +101979,7 @@
         "close": 4751.43
       }
     ],
-    "last_updated": "2026-01-15 15:18:44",
+    "last_updated": "2026-01-15 21:25:42",
     "currency": "CNY",
     "source": "Akshare"
   },
@@ -114205,19 +114205,15 @@
         "close": 26923.62
       }
     ],
-    "last_updated": "2026-01-15 15:18:45",
+    "last_updated": "2026-01-15 21:25:42",
     "currency": "HKD",
     "source": "Akshare"
   },
   "GC=F": {
     "name": "黄金 (COMEX)",
-    "current_price": 4612.8,
-    "change_percent": -0.44,
+    "current_price": 4617.8,
+    "change_percent": -0.33,
     "history": [
-      {
-        "date": "2016-01-15",
-        "close": 1088.6
-      },
       {
         "date": "2016-01-18",
         "close": 1088.9
@@ -124576,17 +124572,17 @@
       },
       {
         "date": "2026-01-15",
-        "close": 4612.8
+        "close": 4617.8
       }
     ],
-    "last_updated": "2026-01-15 15:18:48",
+    "last_updated": "2026-01-15 21:25:45",
     "currency": "USD",
     "source": "Akshare"
   },
   "BTC-USD": {
     "name": "比特币 (BTC)",
-    "current_price": 96500.0,
-    "change_percent": -1.33,
+    "current_price": 95425.0,
+    "change_percent": -2.43,
     "history": [
       {
         "date": "2017-12-18",
@@ -132226,10 +132222,10 @@
       },
       {
         "date": "2026-01-15",
-        "close": 96500.0
+        "close": 95425.0
       }
     ],
-    "last_updated": "2026-01-15 15:18:49",
+    "last_updated": "2026-01-15 21:25:47",
     "currency": "USD",
     "source": "Akshare"
   }
