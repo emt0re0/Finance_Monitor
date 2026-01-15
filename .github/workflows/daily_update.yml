@@ -1,0 +1,50 @@
+name: Daily Finance Update
+
+on:
+  schedule:
+    # 每天 UTC 时间 21:00 (北京时间凌晨 5:00) 运行，确保美股收盘
+    - cron: '0 21 * * *'
+  workflow_dispatch: # 允许手动触发测试
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # 允许写入仓库
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run data fetch script
+        run: |
+          python scripts/fetch_data.py
+
+      - name: Run Quant Screener
+        run: |
+          python scripts/screener.py
+
+      - name: Commit and Push changes
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions@github.com"
+          
+          # 检查是否有文件变化
+          if [[ -n $(git status -s) ]]; then
+            echo "Changes detected, committing..."
+            git add data/*.json
+            git commit -m "📈 Auto-update market data [$(date +'%Y-%m-%d')]"
+            git push
+          else
+            echo "No changes detected."
+          fi
