@@ -3,24 +3,27 @@ name: Daily Finance Update
 on:
   schedule:
     # 每天 UTC 时间 21:00 (北京时间凌晨 5:00) 运行，确保美股收盘
-    - cron: '0 21 * * *'
+    - cron: "0 21 * * *"
   workflow_dispatch: # 允许手动触发测试
 
 jobs:
   update-data:
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # 允许写入仓库
+      contents: write # 允许写入仓库
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          # 取消默认的浅克隆，获取完整历史记录以确保 rebase 成功
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
-          cache: 'pip'
+          python-version: "3.9"
+          cache: "pip"
 
       - name: Install dependencies
         run: |
@@ -38,13 +41,21 @@ jobs:
         run: |
           git config --global user.name "GitHub Actions Bot"
           git config --global user.email "actions@github.com"
-          
-          # 检查是否有文件变化
-          if [[ -n $(git status -s) ]]; then
-            echo "Changes detected, committing..."
-            git add data/*.json
-            git commit -m "📈 Auto-update market data [$(date +'%Y-%m-%d')]"
-            git push
-          else
+
+          # 1. 暂存数据文件的变化
+          git add data/*.json
+
+          # 2. 检查是否有需要提交的内容 (防止空 commit 报错)
+          if git diff --cached --quiet; then
             echo "No changes detected."
+          else
+            echo "Changes detected, committing..."
+            git commit -m "📈 Auto-update market data [$(date +'%Y-%m-%d')]"
+            
+            # 3. 【核心修复】拉取远程更新并使用 rebase 解决冲突
+            # 这会把云端新生成的数据 commit 放到你本地手动 push 的 commit 之后
+            git pull --rebase origin main
+            
+            # 4. 推送到远程仓库
+            git push origin main
           fi
