@@ -1,8 +1,8 @@
 {
   "^GSPC": {
     "name": "标普500 (SPX)",
-    "current_price": 6940.01,
-    "change_percent": -0.06,
+    "current_price": 6796.86,
+    "change_percent": -2.06,
     "history": [
       {
         "date": "2004-01-02",
@@ -22199,16 +22199,20 @@
       {
         "date": "2026-01-16",
         "close": 6940.01
+      },
+      {
+        "date": "2026-01-20",
+        "close": 6796.86
       }
     ],
-    "last_updated": "2026-01-20 21:24:42",
+    "last_updated": "2026-01-21 21:31:17",
     "currency": "USD",
     "source": "Akshare"
   },
   "^IXIC": {
     "name": "纳斯达克 (IXIC)",
-    "current_price": 23515.39,
-    "change_percent": -0.06,
+    "current_price": 22954.32,
+    "change_percent": -2.39,
     "history": [
       {
         "date": "2004-01-02",
@@ -44393,16 +44397,20 @@
       {
         "date": "2026-01-16",
         "close": 23515.39
+      },
+      {
+        "date": "2026-01-20",
+        "close": 22954.32
       }
     ],
-    "last_updated": "2026-01-20 21:24:43",
+    "last_updated": "2026-01-21 21:31:18",
     "currency": "USD",
     "source": "Akshare"
   },
   "000001.SS": {
     "name": "上证指数 (000001)",
-    "current_price": 4113.65,
-    "change_percent": -0.01,
+    "current_price": 4116.94,
+    "change_percent": 0.08,
     "history": [
       {
         "date": "1990-12-19",
@@ -78671,16 +78679,20 @@
       {
         "date": "2026-01-20",
         "close": 4113.65
+      },
+      {
+        "date": "2026-01-21",
+        "close": 4116.94
       }
     ],
-    "last_updated": "2026-01-20 21:24:44",
+    "last_updated": "2026-01-21 21:31:18",
     "currency": "CNY",
     "source": "Akshare"
   },
   "000300.SS": {
     "name": "沪深300 (000300)",
-    "current_price": 4718.88,
-    "change_percent": -0.33,
+    "current_price": 4723.07,
+    "change_percent": 0.09,
     "history": [
       {
         "date": "2002-01-04",
@@ -102017,16 +102029,20 @@
       {
         "date": "2026-01-20",
         "close": 4718.88
+      },
+      {
+        "date": "2026-01-21",
+        "close": 4723.07
       }
     ],
-    "last_updated": "2026-01-20 21:24:44",
+    "last_updated": "2026-01-21 21:31:19",
     "currency": "CNY",
     "source": "Akshare"
   },
   "^HSI": {
     "name": "恒生指数 (HSI)",
-    "current_price": 26563.9,
-    "change_percent": -1.05,
+    "current_price": 26585.06,
+    "change_percent": 0.37,
     "history": [
       {
         "date": "2013-08-20",
@@ -114251,21 +114267,25 @@
       {
         "date": "2026-01-19",
         "close": 26563.9
+      },
+      {
+        "date": "2026-01-20",
+        "close": 26487.51
+      },
+      {
+        "date": "2026-01-21",
+        "close": 26585.06
       }
     ],
-    "last_updated": "2026-01-20 21:24:45",
+    "last_updated": "2026-01-21 21:31:20",
     "currency": "HKD",
     "source": "Akshare"
   },
   "GC=F": {
     "name": "黄金 (COMEX)",
-    "current_price": 4765.6,
-    "change_percent": 1.91,
+    "current_price": 4836.0,
+    "change_percent": 1.41,
     "history": [
-      {
-        "date": "2016-01-21",
-        "close": 1101.4
-      },
       {
         "date": "2016-01-22",
         "close": 1098.2
@@ -124620,17 +124640,21 @@
       },
       {
         "date": "2026-01-20",
-        "close": 4765.6
+        "close": 4768.8
+      },
+      {
+        "date": "2026-01-21",
+        "close": 4836.0
       }
     ],
-    "last_updated": "2026-01-20 21:24:47",
+    "last_updated": "2026-01-21 21:31:21",
     "currency": "USD",
     "source": "Akshare"
   },
   "BTC-USD": {
     "name": "比特币 (BTC)",
-    "current_price": 89730.0,
-    "change_percent": -3.58,
+    "current_price": 90480.0,
+    "change_percent": 0.71,
     "history": [
       {
         "date": "2017-12-18",
@@ -132282,10 +132306,14 @@
       },
       {
         "date": "2026-01-20",
-        "close": 89730.0
+        "close": 89845.0
+      },
+      {
+        "date": "2026-01-21",
+        "close": 90480.0
       }
     ],
-    "last_updated": "2026-01-20 21:24:48",
+    "last_updated": "2026-01-21 21:31:23",
     "currency": "USD",
     "source": "Akshare"
   }
