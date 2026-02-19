@@ -1,8 +1,8 @@
 {
   "^GSPC": {
     "name": "标普500 (SPX)",
-    "current_price": 6843.22,
-    "change_percent": 0.1,
+    "current_price": 6881.31,
+    "change_percent": 0.56,
     "history": [
       {
         "date": "2004-01-02",
@@ -22279,16 +22279,20 @@
       {
         "date": "2026-02-17",
         "close": 6843.22
+      },
+      {
+        "date": "2026-02-18",
+        "close": 6881.31
       }
     ],
-    "last_updated": "2026-02-18 21:38:05",
+    "last_updated": "2026-02-19 21:36:57",
     "currency": "USD",
     "source": "Akshare"
   },
   "^IXIC": {
     "name": "纳斯达克 (IXIC)",
-    "current_price": 22578.38,
-    "change_percent": 0.14,
+    "current_price": 22753.63,
+    "change_percent": 0.78,
     "history": [
       {
         "date": "2004-01-02",
@@ -44553,9 +44557,13 @@
       {
         "date": "2026-02-17",
         "close": 22578.38
+      },
+      {
+        "date": "2026-02-18",
+        "close": 22753.63
       }
     ],
-    "last_updated": "2026-02-18 21:38:05",
+    "last_updated": "2026-02-19 21:36:59",
     "currency": "USD",
     "source": "Akshare"
   },
@@ -78905,7 +78913,7 @@
         "close": 4082.07
       }
     ],
-    "last_updated": "2026-02-18 21:38:06",
+    "last_updated": "2026-02-19 21:36:59",
     "currency": "CNY",
     "source": "Akshare"
   },
@@ -102323,7 +102331,7 @@
         "close": 4660.41
       }
     ],
-    "last_updated": "2026-02-18 21:38:07",
+    "last_updated": "2026-02-19 21:37:00",
     "currency": "CNY",
     "source": "Akshare"
   },
@@ -114637,19 +114645,15 @@
         "close": 26705.94
       }
     ],
-    "last_updated": "2026-02-18 21:38:07",
+    "last_updated": "2026-02-19 21:37:01",
     "currency": "HKD",
     "source": "Akshare"
   },
   "GC=F": {
     "name": "黄金 (COMEX)",
-    "current_price": 5001.4,
-    "change_percent": 2.15,
+    "current_price": 5012.5,
+    "change_percent": 0.33,
     "history": [
-      {
-        "date": "2016-02-19",
-        "close": 1226.6
-      },
       {
         "date": "2016-02-22",
         "close": 1208.9
@@ -125004,17 +125008,21 @@
       },
       {
         "date": "2026-02-18",
-        "close": 5001.4
+        "close": 4996.0
+      },
+      {
+        "date": "2026-02-19",
+        "close": 5012.5
       }
     ],
-    "last_updated": "2026-02-18 21:38:09",
+    "last_updated": "2026-02-19 21:37:02",
     "currency": "USD",
     "source": "Akshare"
   },
   "BTC-USD": {
     "name": "比特币 (BTC)",
-    "current_price": 66585.0,
-    "change_percent": -1.96,
+    "current_price": 67315.0,
+    "change_percent": 1.12,
     "history": [
       {
         "date": "2017-12-18",
@@ -132750,10 +132758,14 @@
       },
       {
         "date": "2026-02-18",
-        "close": 66585.0
+        "close": 66570.0
+      },
+      {
+        "date": "2026-02-19",
+        "close": 67315.0
       }
     ],
-    "last_updated": "2026-02-18 21:38:11",
+    "last_updated": "2026-02-19 21:37:04",
     "currency": "USD",
     "source": "Akshare"
   }
