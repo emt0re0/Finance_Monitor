@@ -22565,7 +22565,7 @@
         "close": 7580.06
       }
     ],
-    "last_updated": "2026-05-30 22:03:15",
+    "last_updated": "2026-05-31 22:02:38",
     "currency": "USD",
     "source": "Akshare"
   },
@@ -45123,7 +45123,7 @@
         "close": 26972.62
       }
     ],
-    "last_updated": "2026-05-30 22:03:16",
+    "last_updated": "2026-05-31 22:02:38",
     "currency": "USD",
     "source": "Akshare"
   },
@@ -79733,7 +79733,7 @@
         "close": 4068.57
       }
     ],
-    "last_updated": "2026-05-30 22:03:16",
+    "last_updated": "2026-05-31 22:02:39",
     "currency": "CNY",
     "source": "Akshare"
   },
@@ -103411,7 +103411,7 @@
         "close": 4892.12
       }
     ],
-    "last_updated": "2026-05-30 22:03:17",
+    "last_updated": "2026-05-31 22:02:39",
     "currency": "CNY",
     "source": "Akshare"
   },
@@ -115989,7 +115989,7 @@
         "close": 25182.39
       }
     ],
-    "last_updated": "2026-05-30 22:03:18",
+    "last_updated": "2026-05-31 22:02:40",
     "currency": "HKD",
     "source": "Akshare"
   },
@@ -115998,10 +115998,6 @@
     "current_price": 4569.4,
     "change_percent": 0.94,
     "history": [
-      {
-        "date": "2016-05-31",
-        "close": 1215.4
-      },
       {
         "date": "2016-06-01",
         "close": 1215.2
@@ -126355,7 +126351,7 @@
         "close": 4569.4
       }
     ],
-    "last_updated": "2026-05-30 22:03:20",
+    "last_updated": "2026-05-31 22:02:42",
     "currency": "USD",
     "source": "Akshare"
   },
@@ -134389,7 +134385,7 @@
         "close": 73850.0
       }
     ],
-    "last_updated": "2026-05-30 22:03:21",
+    "last_updated": "2026-05-31 22:02:43",
     "currency": "USD",
     "source": "Akshare"
   }
