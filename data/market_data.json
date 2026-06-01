@@ -22565,7 +22565,7 @@
         "close": 7580.06
       }
     ],
-    "last_updated": "2026-05-31 22:02:38",
+    "last_updated": "2026-06-01 23:03:05",
     "currency": "USD",
     "source": "Akshare"
   },
@@ -45123,14 +45123,14 @@
         "close": 26972.62
       }
     ],
-    "last_updated": "2026-05-31 22:02:38",
+    "last_updated": "2026-06-01 23:03:05",
     "currency": "USD",
     "source": "Akshare"
   },
   "000001.SS": {
     "name": "上证指数 (000001)",
-    "current_price": 4068.57,
-    "change_percent": -0.73,
+    "current_price": 4057.74,
+    "change_percent": -0.27,
     "history": [
       {
         "date": "1990-12-19",
@@ -79731,16 +79731,20 @@
       {
         "date": "2026-05-29",
         "close": 4068.57
+      },
+      {
+        "date": "2026-06-01",
+        "close": 4057.74
       }
     ],
-    "last_updated": "2026-05-31 22:02:39",
+    "last_updated": "2026-06-01 23:03:06",
     "currency": "CNY",
     "source": "Akshare"
   },
   "000300.SS": {
     "name": "沪深300 (000300)",
-    "current_price": 4892.12,
-    "change_percent": -0.45,
+    "current_price": 4844.26,
+    "change_percent": -0.98,
     "history": [
       {
         "date": "2002-01-04",
@@ -103409,16 +103413,20 @@
       {
         "date": "2026-05-29",
         "close": 4892.12
+      },
+      {
+        "date": "2026-06-01",
+        "close": 4844.26
       }
     ],
-    "last_updated": "2026-05-31 22:02:39",
+    "last_updated": "2026-06-01 23:03:07",
     "currency": "CNY",
     "source": "Akshare"
   },
   "^HSI": {
     "name": "恒生指数 (HSI)",
-    "current_price": 25182.39,
-    "change_percent": 0.7,
+    "current_price": 25398.18,
+    "change_percent": 0.86,
     "history": [
       {
         "date": "2013-08-20",
@@ -115987,21 +115995,21 @@
       {
         "date": "2026-05-29",
         "close": 25182.39
+      },
+      {
+        "date": "2026-06-01",
+        "close": 25398.18
       }
     ],
-    "last_updated": "2026-05-31 22:02:40",
+    "last_updated": "2026-06-01 23:03:07",
     "currency": "HKD",
     "source": "Akshare"
   },
   "GC=F": {
     "name": "黄金 (COMEX)",
-    "current_price": 4569.4,
-    "change_percent": 0.94,
+    "current_price": 4515.2,
+    "change_percent": 0.01,
     "history": [
-      {
-        "date": "2016-06-01",
-        "close": 1215.2
-      },
       {
         "date": "2016-06-02",
         "close": 1212.9
@@ -126349,16 +126357,24 @@
       {
         "date": "2026-05-29",
         "close": 4569.4
+      },
+      {
+        "date": "2026-06-01",
+        "close": 4514.8
+      },
+      {
+        "date": "2026-06-02",
+        "close": 4515.2
       }
     ],
-    "last_updated": "2026-05-31 22:02:42",
+    "last_updated": "2026-06-01 23:03:09",
     "currency": "USD",
     "source": "Akshare"
   },
   "BTC-USD": {
     "name": "比特币 (BTC)",
-    "current_price": 73850.0,
-    "change_percent": 0.15,
+    "current_price": 71535.0,
+    "change_percent": -0.01,
     "history": [
       {
         "date": "2017-12-18",
@@ -134383,9 +134399,17 @@
       {
         "date": "2026-05-29",
         "close": 73850.0
+      },
+      {
+        "date": "2026-06-01",
+        "close": 71540.0
+      },
+      {
+        "date": "2026-06-02",
+        "close": 71535.0
       }
     ],
-    "last_updated": "2026-05-31 22:02:43",
+    "last_updated": "2026-06-01 23:03:11",
     "currency": "USD",
     "source": "Akshare"
   }
