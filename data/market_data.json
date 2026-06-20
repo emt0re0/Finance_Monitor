@@ -22621,7 +22621,7 @@
         "close": 7500.58
       }
     ],
-    "last_updated": "2026-06-19 22:06:07",
+    "last_updated": "2026-06-20 22:11:53",
     "currency": "USD",
     "source": "Akshare"
   },
@@ -45235,7 +45235,7 @@
         "close": 26517.93
       }
     ],
-    "last_updated": "2026-06-19 22:06:07",
+    "last_updated": "2026-06-20 22:11:55",
     "currency": "USD",
     "source": "Akshare"
   },
@@ -79901,7 +79901,7 @@
         "close": 4090.48
       }
     ],
-    "last_updated": "2026-06-19 22:06:08",
+    "last_updated": "2026-06-20 22:11:56",
     "currency": "CNY",
     "source": "Akshare"
   },
@@ -103635,7 +103635,7 @@
         "close": 4941.6
       }
     ],
-    "last_updated": "2026-06-19 22:06:09",
+    "last_updated": "2026-06-20 22:11:57",
     "currency": "CNY",
     "source": "Akshare"
   },
@@ -116269,7 +116269,7 @@
         "close": 23924.81
       }
     ],
-    "last_updated": "2026-06-19 22:06:09",
+    "last_updated": "2026-06-20 22:11:57",
     "currency": "HKD",
     "source": "Akshare"
   },
@@ -116278,10 +116278,6 @@
     "current_price": 4172.2,
     "change_percent": -1.32,
     "history": [
-      {
-        "date": "2016-06-20",
-        "close": 1293.0
-      },
       {
         "date": "2016-06-21",
         "close": 1270.7
@@ -126639,14 +126635,14 @@
         "close": 4172.2
       }
     ],
-    "last_updated": "2026-06-19 22:06:11",
+    "last_updated": "2026-06-20 22:12:00",
     "currency": "USD",
     "source": "Akshare"
   },
   "BTC-USD": {
     "name": "比特币 (BTC)",
-    "current_price": 63160.0,
-    "change_percent": 0.18,
+    "current_price": 63235.0,
+    "change_percent": 0.3,
     "history": [
       {
         "date": "2017-12-18",
@@ -134730,10 +134726,10 @@
       },
       {
         "date": "2026-06-19",
-        "close": 63160.0
+        "close": 63235.0
       }
     ],
-    "last_updated": "2026-06-19 22:06:12",
+    "last_updated": "2026-06-20 22:12:01",
     "currency": "USD",
     "source": "Akshare"
   }
