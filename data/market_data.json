@@ -1,8 +1,8 @@
 {
   "^GSPC": {
     "name": "标普500 (SPX)",
-    "current_price": 7591.7,
-    "change_percent": -0.58,
+    "current_price": 7656.98,
+    "change_percent": 0.86,
     "history": [
       {
         "date": "2004-01-02",
@@ -22847,16 +22847,20 @@
       {
         "date": "2026-09-10",
         "close": 7591.7
+      },
+      {
+        "date": "2026-09-11",
+        "close": 7656.98
       }
     ],
-    "last_updated": "2026-09-11 23:03:39",
+    "last_updated": "2026-09-12 22:53:36",
     "currency": "USD",
     "source": "Akshare"
   },
   "^IXIC": {
     "name": "纳斯达克 (IXIC)",
-    "current_price": 26081.72,
-    "change_percent": -0.65,
+    "current_price": 26333.04,
+    "change_percent": 0.96,
     "history": [
       {
         "date": "2004-01-02",
@@ -45689,9 +45693,13 @@
       {
         "date": "2026-09-10",
         "close": 26081.72
+      },
+      {
+        "date": "2026-09-11",
+        "close": 26333.04
       }
     ],
-    "last_updated": "2026-09-11 23:03:40",
+    "last_updated": "2026-09-12 22:53:36",
     "currency": "USD",
     "source": "Akshare"
   },
@@ -80597,7 +80605,7 @@
         "close": 3888.11
       }
     ],
-    "last_updated": "2026-09-11 23:03:41",
+    "last_updated": "2026-09-12 22:53:37",
     "currency": "CNY",
     "source": "Akshare"
   },
@@ -104571,7 +104579,7 @@
         "close": 4510.15
       }
     ],
-    "last_updated": "2026-09-11 23:03:41",
+    "last_updated": "2026-09-12 22:53:38",
     "currency": "CNY",
     "source": "Akshare"
   },
@@ -117441,7 +117449,7 @@
         "close": 24805.63
       }
     ],
-    "last_updated": "2026-09-11 23:03:42",
+    "last_updated": "2026-09-12 22:53:38",
     "currency": "HKD",
     "source": "Akshare"
   },
@@ -117450,10 +117458,6 @@
     "current_price": 4390.0,
     "change_percent": 0.73,
     "history": [
-      {
-        "date": "2016-09-12",
-        "close": 1331.1
-      },
       {
         "date": "2016-09-13",
         "close": 1322.1
@@ -127811,7 +127815,7 @@
         "close": 4390.0
       }
     ],
-    "last_updated": "2026-09-11 23:03:43",
+    "last_updated": "2026-09-12 22:53:42",
     "currency": "USD",
     "source": "Akshare"
   },
@@ -136145,7 +136149,7 @@
         "close": 77410.0
       }
     ],
-    "last_updated": "2026-09-11 23:03:45",
+    "last_updated": "2026-09-12 22:53:44",
     "currency": "USD",
     "source": "Akshare"
   }
