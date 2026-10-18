@@ -22953,7 +22953,7 @@
         "close": 7659.44
       }
     ],
-    "last_updated": "2026-10-17 22:56:50",
+    "last_updated": "2026-10-18 22:51:32",
     "currency": "USD",
     "source": "Akshare"
   },
@@ -45899,7 +45899,7 @@
         "close": 26140.03
       }
     ],
-    "last_updated": "2026-10-17 22:56:51",
+    "last_updated": "2026-10-18 22:51:32",
     "currency": "USD",
     "source": "Akshare"
   },
@@ -80881,7 +80881,7 @@
         "close": 3716.28
       }
     ],
-    "last_updated": "2026-10-17 22:56:51",
+    "last_updated": "2026-10-18 22:51:32",
     "currency": "CNY",
     "source": "Akshare"
   },
@@ -104931,7 +104931,7 @@
         "close": 4170.61
       }
     ],
-    "last_updated": "2026-10-17 22:56:51",
+    "last_updated": "2026-10-18 22:51:33",
     "currency": "CNY",
     "source": "Akshare"
   },
@@ -117897,19 +117897,15 @@
         "close": 24186.83
       }
     ],
-    "last_updated": "2026-10-17 22:56:52",
+    "last_updated": "2026-10-18 22:51:33",
     "currency": "HKD",
     "source": "Akshare"
   },
   "GC=F": {
     "name": "黄金 (COMEX)",
-    "current_price": 4186.5,
-    "change_percent": -0.14,
+    "current_price": 4197.0,
+    "change_percent": 0.25,
     "history": [
-      {
-        "date": "2016-10-18",
-        "close": 1263.3
-      },
       {
         "date": "2016-10-19",
         "close": 1270.0
@@ -128261,16 +128257,20 @@
       {
         "date": "2026-10-16",
         "close": 4186.5
+      },
+      {
+        "date": "2026-10-19",
+        "close": 4197.0
       }
     ],
-    "last_updated": "2026-10-17 22:56:55",
+    "last_updated": "2026-10-18 22:51:37",
     "currency": "USD",
     "source": "Akshare"
   },
   "BTC-USD": {
     "name": "比特币 (BTC)",
-    "current_price": 81700.0,
-    "change_percent": -0.52,
+    "current_price": 81535.0,
+    "change_percent": -0.2,
     "history": [
       {
         "date": "2017-12-18",
@@ -136695,9 +136695,13 @@
       {
         "date": "2026-10-16",
         "close": 81700.0
+      },
+      {
+        "date": "2026-10-19",
+        "close": 81535.0
       }
     ],
-    "last_updated": "2026-10-17 22:56:58",
+    "last_updated": "2026-10-18 22:51:38",
     "currency": "USD",
     "source": "Akshare"
   }
